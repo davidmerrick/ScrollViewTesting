@@ -10,9 +10,9 @@
 
 @interface ViewController : UIViewController <UIScrollViewDelegate>
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
-- (void)centerScrollViewContents;
+- (void)centerScrollViewContents:(UIScrollView*)scrollView;
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer;
 - (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)recognizer;
 @end

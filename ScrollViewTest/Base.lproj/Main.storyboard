@@ -33,6 +33,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="Qcr-LR-Eat" id="s2z-mi-hAY"/>
                         <outlet property="scrollView" destination="mJy-AI-e3h" id="b15-w7-FKs"/>
                     </connections>
                 </viewController>

@@ -21,21 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-    // 1
-    UIImage *image = [UIImage imageNamed:@"photo1.png"];
-    self.imageView = [[UIImageView alloc] initWithImage:image];
-    self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
-    [self.scrollView addSubview:self.imageView];
-	
-    // 2
-    self.scrollView.contentSize = image.size;
-	
-    // 3
+    self.imageView.image = [UIImage imageNamed:@"photo1.png"];
+    self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=self.imageView.image.size};
+    self.scrollView.contentSize = self.imageView.image.size;
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDoubleTapped:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
     doubleTapRecognizer.numberOfTouchesRequired = 1;
     [self.scrollView addGestureRecognizer:doubleTapRecognizer];
-	
     UITapGestureRecognizer *twoFingerTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTwoFingerTapped:)];
     twoFingerTapRecognizer.numberOfTapsRequired = 1;
     twoFingerTapRecognizer.numberOfTouchesRequired = 2;
@@ -44,25 +36,23 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	
-    // 4
+
     CGRect scrollViewFrame = self.scrollView.frame;
     CGFloat scaleWidth = scrollViewFrame.size.width / self.scrollView.contentSize.width;
     CGFloat scaleHeight = scrollViewFrame.size.height / self.scrollView.contentSize.height;
     CGFloat minScale = MIN(scaleWidth, scaleHeight);
     self.scrollView.minimumZoomScale = minScale;
-	
-    // 5
+
     self.scrollView.maximumZoomScale = 1.0f;
     self.scrollView.zoomScale = minScale;
-	
-    // 6
-    [self centerScrollViewContents];
+
+    [self centerScrollViewContents:self.scrollView];
 }
 
-- (void)centerScrollViewContents {
-    CGSize boundsSize = self.scrollView.bounds.size;
-    CGRect contentsFrame = self.imageView.frame;
+- (void)centerScrollViewContents:(UIScrollView*)scrollView {
+    CGSize boundsSize = scrollView.bounds.size;
+    UIImageView *imageView = (UIImageView*)[scrollView.subviews objectAtIndex:0];
+	CGRect contentsFrame = imageView.frame;
 	
     if (contentsFrame.size.width < boundsSize.width) {
         contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0f;
@@ -79,16 +69,15 @@
     self.imageView.frame = contentsFrame;
 }
 
-- (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer {
-    // 1
-    CGPoint pointInView = [recognizer locationInView:self.imageView];
+- (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)sender {
+    CGPoint pointInView = [sender locationInView:self.imageView];
+
+	UIScrollView *scrollView = (UIScrollView*)sender.view;
 	
-    // 2
-    CGFloat newZoomScale = self.scrollView.zoomScale * 1.5f;
-    newZoomScale = MIN(newZoomScale, self.scrollView.maximumZoomScale);
+    CGFloat newZoomScale = scrollView.zoomScale * 1.5f;
+    newZoomScale = MIN(newZoomScale, scrollView.maximumZoomScale);
 	
-    // 3
-    CGSize scrollViewSize = self.scrollView.bounds.size;
+    CGSize scrollViewSize = scrollView.bounds.size;
 	
     CGFloat w = scrollViewSize.width / newZoomScale;
     CGFloat h = scrollViewSize.height / newZoomScale;
@@ -97,15 +86,16 @@
 	
     CGRect rectToZoomTo = CGRectMake(x, y, w, h);
 	
-    // 4
-    [self.scrollView zoomToRect:rectToZoomTo animated:YES];
+    [scrollView zoomToRect:rectToZoomTo animated:YES];
 }
 
-- (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)recognizer {
-    // Zoom out slightly, capping at the minimum zoom scale specified by the scroll view
-    CGFloat newZoomScale = self.scrollView.zoomScale / 1.5f;
+- (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)sender {
+    UIScrollView *scrollView = (UIScrollView*)sender.view;
+	
+	// Zoom out slightly, capping at the minimum zoom scale specified by the scroll view
+    CGFloat newZoomScale = scrollView.zoomScale / 1.5f;
     newZoomScale = MAX(newZoomScale, self.scrollView.minimumZoomScale);
-    [self.scrollView setZoomScale:newZoomScale animated:YES];
+    [scrollView setZoomScale:newZoomScale animated:YES];
 }
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView {
@@ -115,7 +105,7 @@
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
     // The scroll view has zoomed, so you need to re-center the contents
-    [self centerScrollViewContents];
+    [self centerScrollViewContents:scrollView];
 }
 
 - (void)didReceiveMemoryWarning
