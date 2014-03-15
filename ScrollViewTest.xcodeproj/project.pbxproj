@@ -21,6 +21,12 @@
 		634E8FF918D43B1B00D29B54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634E8FDB18D43B1B00D29B54 /* UIKit.framework */; };
 		634E900118D43B1B00D29B54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 634E8FFF18D43B1B00D29B54 /* InfoPlist.strings */; };
 		634E900318D43B1B00D29B54 /* ScrollViewTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 634E900218D43B1B00D29B54 /* ScrollViewTestTests.m */; };
+		634E901318D43B7600D29B54 /* photo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 634E900D18D43B7600D29B54 /* photo1.png */; };
+		634E901418D43B7600D29B54 /* photo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 634E900E18D43B7600D29B54 /* photo2.png */; };
+		634E901518D43B7600D29B54 /* photo3.png in Resources */ = {isa = PBXBuildFile; fileRef = 634E900F18D43B7600D29B54 /* photo3.png */; };
+		634E901618D43B7600D29B54 /* photo4.png in Resources */ = {isa = PBXBuildFile; fileRef = 634E901018D43B7600D29B54 /* photo4.png */; };
+		634E901718D43B7600D29B54 /* photo5.png in Resources */ = {isa = PBXBuildFile; fileRef = 634E901118D43B7600D29B54 /* photo5.png */; };
+		634E901818D43B7600D29B54 /* slow.png in Resources */ = {isa = PBXBuildFile; fileRef = 634E901218D43B7600D29B54 /* slow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,12 @@
 		634E8FFE18D43B1B00D29B54 /* ScrollViewTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ScrollViewTestTests-Info.plist"; sourceTree = "<group>"; };
 		634E900018D43B1B00D29B54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		634E900218D43B1B00D29B54 /* ScrollViewTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollViewTestTests.m; sourceTree = "<group>"; };
+		634E900D18D43B7600D29B54 /* photo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo1.png; sourceTree = "<group>"; };
+		634E900E18D43B7600D29B54 /* photo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo2.png; sourceTree = "<group>"; };
+		634E900F18D43B7600D29B54 /* photo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo3.png; sourceTree = "<group>"; };
+		634E901018D43B7600D29B54 /* photo4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo4.png; sourceTree = "<group>"; };
+		634E901118D43B7600D29B54 /* photo5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo5.png; sourceTree = "<group>"; };
+		634E901218D43B7600D29B54 /* slow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +98,7 @@
 				634E8FFC18D43B1B00D29B54 /* ScrollViewTestTests */,
 				634E8FD618D43B1B00D29B54 /* Frameworks */,
 				634E8FD518D43B1B00D29B54 /* Products */,
+				634E900C18D43B7600D29B54 /* ScrollViewsResources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +163,19 @@
 				634E8FFF18D43B1B00D29B54 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		634E900C18D43B7600D29B54 /* ScrollViewsResources */ = {
+			isa = PBXGroup;
+			children = (
+				634E900D18D43B7600D29B54 /* photo1.png */,
+				634E900E18D43B7600D29B54 /* photo2.png */,
+				634E900F18D43B7600D29B54 /* photo3.png */,
+				634E901018D43B7600D29B54 /* photo4.png */,
+				634E901118D43B7600D29B54 /* photo5.png */,
+				634E901218D43B7600D29B54 /* slow.png */,
+			);
+			path = ScrollViewsResources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,8 +254,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634E901618D43B7600D29B54 /* photo4.png in Resources */,
+				634E901418D43B7600D29B54 /* photo2.png in Resources */,
+				634E901818D43B7600D29B54 /* slow.png in Resources */,
+				634E901318D43B7600D29B54 /* photo1.png in Resources */,
 				634E8FF018D43B1B00D29B54 /* Images.xcassets in Resources */,
+				634E901718D43B7600D29B54 /* photo5.png in Resources */,
 				634E8FE218D43B1B00D29B54 /* InfoPlist.strings in Resources */,
+				634E901518D43B7600D29B54 /* photo3.png in Resources */,
 				634E8FEB18D43B1B00D29B54 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
