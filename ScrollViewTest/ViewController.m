@@ -49,8 +49,35 @@
     [self centerScrollViewContents:self.scrollView];
 }
 
+- (IBAction)cropImage:(id)sender {
+	//Crops the image in the scrollView and puts the final image in the finalImageView
+	UIScrollView *scrollView = self.scrollView;
+	UIImageView *imageView = (UIImageView*)[scrollView.subviews objectAtIndex:0];
+	
+	//Calculate the required area from the scrollview
+    CGRect visibleRect;
+    float scale = 1.0f/scrollView.zoomScale;
+    visibleRect.origin.x = scrollView.contentOffset.x * scale;
+    visibleRect.origin.y = scrollView.contentOffset.y * scale;
+    visibleRect.size.width = scrollView.bounds.size.width * scale;
+    visibleRect.size.height = scrollView.bounds.size.height * scale;
+	
+    self.finalImageView.image = imageFromView(imageView.image, &visibleRect);
+}
+
+UIImage* imageFromView(UIImage* srcImage, CGRect* rect)
+{
+    CGImageRef cr = CGImageCreateWithImageInRect(srcImage.CGImage, *rect);
+    UIImage* cropped = [UIImage imageWithCGImage:cr];
+	
+    CGImageRelease(cr);
+    return cropped;
+}
+
 - (void)centerScrollViewContents:(UIScrollView*)scrollView {
     CGSize boundsSize = scrollView.bounds.size;
+
+	//Retrieve child image view
     UIImageView *imageView = (UIImageView*)[scrollView.subviews objectAtIndex:0];
 	CGRect contentsFrame = imageView.frame;
 	

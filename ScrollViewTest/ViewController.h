@@ -12,6 +12,9 @@
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
+- (IBAction)cropImage:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *finalImageView;
+
 - (void)centerScrollViewContents:(UIScrollView*)scrollView;
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer;
 - (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)recognizer;
